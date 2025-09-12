@@ -69,7 +69,7 @@ const App: React.FC = () => {
       <div className="container mx-auto max-w-4xl">
         <div className="bg-white rounded-lg shadow-2xl p-8">
           <header className="text-center mb-8">
-            <img src="https://www.vpaurbanismo.com.br/assinatura/vpa_assinatura.png" alt="VPA Urbanismo Logo" className="w-[130px] h-[74px] object-contain mx-auto mb-4" />
+            <img src="https://www.vpaurbanismo.com.br/assinaturadeemail/vpa_assinatura.png" alt="VPA Urbanismo Logo" className="w-[130px] h-[74px] object-contain mx-auto mb-4" />
             <h1 className="text-3xl font-bold text-[#003366]">Gerador de Assinatura de E-mail</h1>
             <p className="text-gray-600 mt-2">Personalize sua assinatura preenchendo os campos e escolhendo um modelo.</p>
           </header>
@@ -86,7 +86,7 @@ const App: React.FC = () => {
                 onKeyDown={(e) => e.key === 'Enter' && setSignatureType('vpa_urbanismo')}
                 className={`p-4 border-2 rounded-lg cursor-pointer transition-all duration-300 transform hover:scale-105 ${signatureType === 'vpa_urbanismo' ? 'border-blue-500 shadow-lg bg-blue-50' : 'border-gray-200 hover:border-blue-400'}`}
               >
-                <img src="https://www.vpaurbanismo.com.br/assinatura/vpa_assinatura.png" alt="VPA Urbanismo" className="h-20 object-contain" />
+                <img src="https://www.vpaurbanismo.com.br/assinaturadeemail/vpa_assinatura.png" alt="VPA Urbanismo" className="h-20 object-contain" />
               </div>
               {/* Grupo VPA Option */}
               <div
@@ -97,7 +97,7 @@ const App: React.FC = () => {
                 onKeyDown={(e) => e.key === 'Enter' && setSignatureType('grupo_vpa')}
                 className={`p-4 border-2 rounded-lg cursor-pointer transition-all duration-300 transform hover:scale-105 ${signatureType === 'grupo_vpa' ? 'border-blue-500 shadow-lg bg-blue-50' : 'border-gray-200 hover:border-blue-400'}`}
               >
-                <img src="https://vpaurbanismo.com.br/assinatura/grupovpa_assinatura.png" alt="Grupo VPA" className="h-20 object-contain" />
+                <img src="https://vpaurbanismo.com.br/assinaturadeemail/grupovpa_assinatura.png" alt="Grupo VPA" className="h-20 object-contain" />
               </div>
             </div>
           </div>

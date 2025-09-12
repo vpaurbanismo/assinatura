@@ -12,8 +12,8 @@ const SignaturePreview: React.FC<SignaturePreviewProps> = ({ data, isHtmlGenerat
   
   const isGrupoVpa = signatureType === 'grupo_vpa';
 
-  const vpaUrbanismoLogoUrl = 'https://www.vpaurbanismo.com.br/assinatura/vpa_assinatura.png';
-  const grupoVpaLogoUrl = 'https://vpaurbanismo.com.br/assinatura/grupovpa_assinatura.png';
+  const vpaUrbanismoLogoUrl = 'https://www.vpaurbanismo.com.br/assinaturadeemail/vpa_assinatura.png';
+  const grupoVpaLogoUrl = 'https://vpaurbanismo.com.br/assinaturadeemail/grupovpa_assinatura.png';
   const logoUrl = isGrupoVpa ? grupoVpaLogoUrl : vpaUrbanismoLogoUrl;
   const logoAlt = isGrupoVpa ? "Grupo VPA" : "VPA Urbanismo";
   
@@ -27,10 +27,10 @@ const SignaturePreview: React.FC<SignaturePreviewProps> = ({ data, isHtmlGenerat
   };
 
   const socialIcons = {
-    instagram: 'https://www.vpaurbanismo.com.br/assinatura/Instagram-verde-48.png',
-    facebook: 'https://www.vpaurbanismo.com.br/assinatura/facebook-verde-48.png',
-    linkedin: 'https://www.vpaurbanismo.com.br/assinatura/linkedin_verde-48.png',
-    youtube: 'https://vpaurbanismo.com.br/assinatura/youtube-verde-48.png',
+    instagram: 'https://www.vpaurbanismo.com.br/assinaturadeemail/Instagram-verde-48.png',
+    facebook: 'https://www.vpaurbanismo.com.br/assinaturadeemail/facebook-verde-48.png',
+    linkedin: 'https://www.vpaurbanismo.com.br/assinaturadeemail/linkedin_verde-48.png',
+    youtube: 'https://vpaurbanismo.com.br/assinaturadeemail/youtube-verde-48.png',
   };
 
 

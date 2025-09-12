@@ -30,7 +30,7 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ children }) => 
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="bg-white rounded-lg shadow-2xl p-8">
-            <img src="https://www.vpaurbanismo.com.br/assinatura/vpa_assinatura.png" alt="VPA Urbanismo Logo" className="w-[130px] h-[74px] object-contain mx-auto mb-6" />
+            <img src="https://www.vpaurbanismo.com.br/assinaturadeemail/vpa_assinatura.png" alt="VPA Urbanismo Logo" className="w-[130px] h-[74px] object-contain mx-auto mb-6" />
             <h2 className="text-2xl font-bold text-center text-[#003366] mb-2">Acesso Restrito</h2>
             <p className="text-center text-gray-600 mb-6">Por favor, insira a senha para continuar.</p>
             <form onSubmit={handlePasswordSubmit} className="space-y-4">
