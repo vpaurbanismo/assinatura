@@ -31,19 +31,26 @@ const App: React.FC = () => {
   const copyHtmlToClipboard = useCallback(() => {
     if (signatureRef.current) {
       const htmlContent = signatureRef.current.innerHTML;
+      
+      const listener = (e: ClipboardEvent) => {
+        // We need to set both text/html and text/plain for best compatibility
+        e.clipboardData?.setData('text/html', htmlContent);
+        e.clipboardData?.setData('text/plain', htmlContent);
+        e.preventDefault();
+      };
+
+      document.addEventListener('copy', listener);
       try {
-        const blob = new Blob([htmlContent], { type: 'text/html' });
-        const clipboardItem = new ClipboardItem({ 'text/html': blob });
-        navigator.clipboard.write([clipboardItem]).then(() => {
-          setCopied(true);
-          setTimeout(() => setCopied(false), 2000);
-        }).catch(err => {
-          console.error('Failed to copy HTML: ', err);
-          alert('Não foi possível copiar o HTML. Por favor, tente novamente.');
-        });
-      } catch (error) {
-        console.error('Error with Clipboard API:', error);
-        alert('Seu navegador pode não suportar esta funcionalidade de cópia.');
+        // This triggers the 'copy' event that we're listening for
+        document.execCommand('copy');
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (err) {
+        console.error('Failed to copy HTML: ', err);
+        alert('Não foi possível copiar o HTML. Por favor, tente novamente.');
+      } finally {
+        // Cleanup the event listener
+        document.removeEventListener('copy', listener);
       }
     }
   }, []);
