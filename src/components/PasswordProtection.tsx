@@ -1,10 +1,10 @@
+
 import React, { useState, FormEvent } from 'react';
 
 interface PasswordProtectionProps {
   children: React.ReactNode;
 }
 
-// You can change the password here
 const CORRECT_PASSWORD = 'vpa2024';
 
 const PasswordProtection: React.FC<PasswordProtectionProps> = ({ children }) => {
@@ -27,33 +27,56 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ children }) => 
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-[#F3F4F6] flex flex-col items-center justify-center p-4 font-sans">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-lg shadow-2xl p-8">
-            <img src="https://www.vpaurbanismo.com.br/assinaturadeemail/vpa_assinatura.png" alt="VPA Urbanismo Logo" className="w-[130px] h-[74px] object-contain mx-auto mb-6" />
-            <h2 className="text-2xl font-bold text-center text-[#003366] mb-2">Acesso Restrito</h2>
-            <p className="text-center text-gray-600 mb-6">Por favor, insira a senha para continuar.</p>
-            <form onSubmit={handlePasswordSubmit} className="space-y-4">
-                <div>
-                    <label htmlFor="password" className="block text-sm font-medium text-gray-700 sr-only">Senha</label>
-                    <input
-                        id="password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900"
-                        placeholder="Digite a senha"
-                        aria-describedby="password-error"
-                    />
-                </div>
-                {error && <p id="password-error" className="text-red-500 text-sm text-center">{error}</p>}
-                <button
-                    type="submit"
-                    className="w-full text-white font-bold py-3 px-4 rounded-lg transition-colors duration-300 bg-[#003366] hover:bg-[#002244]"
-                >
-                    Acessar
-                </button>
-            </form>
+        <div className="bg-white rounded-[2.5rem] shadow-2xl p-10 md:p-14 border border-gray-100 relative overflow-hidden">
+            <div className="text-center mb-12">
+                <img 
+                  src="https://www.vpaurbanismo.com.br/assinaturadeemail/vpa_assinatura.png" 
+                  alt="VPA Urbanismo" 
+                  className="w-[180px] h-auto object-contain mx-auto mb-10" 
+                />
+                
+                <h1 className="text-gray-400 text-[10px] font-black uppercase tracking-[0.3em] mb-2">Plataforma Oficial</h1>
+                <h2 className="text-4xl font-black text-[#203864] leading-tight tracking-tighter">
+                  Gerador de<br/>Assinatura <span className="text-[#19a649]">2.0</span>
+                </h2>
+                <p className="text-[#203864] text-[10px] font-bold uppercase tracking-[0.2em] mt-4 opacity-40">Sistemas VPA</p>
+            </div>
+
+            <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100 shadow-inner">
+                <form onSubmit={handlePasswordSubmit} className="space-y-5">
+                    <div className="space-y-2">
+                        <label htmlFor="password" className="block text-center text-[9px] font-black text-gray-400 uppercase tracking-widest">Senha de Segurança</label>
+                        <input
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="block w-full px-4 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#19a649]/20 focus:border-[#19a649] text-center font-bold text-[#203864] text-xl transition-all"
+                            placeholder="••••••••"
+                        />
+                    </div>
+                    
+                    {error && (
+                      <p className="text-red-600 text-[11px] font-black text-center animate-pulse bg-red-50 py-2 rounded-lg">
+                        {error}
+                      </p>
+                    )}
+                    
+                    <button
+                        type="submit"
+                        className="w-full text-white font-black py-5 px-4 rounded-2xl transition-all duration-300 bg-[#203864] hover:bg-[#1a2d52] shadow-xl hover:shadow-[#203864]/20 active:scale-[0.97] uppercase tracking-widest text-xs flex items-center justify-center gap-3"
+                    >
+                        ACESSAR FERRAMENTA 2.0
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </form>
+            </div>
+            
+            <p className="text-center text-gray-300 text-[8px] mt-10 font-bold uppercase tracking-[0.4em]">
+              © 2024 VPA Urbanismo • Marketing
+            </p>
         </div>
       </div>
     </div>

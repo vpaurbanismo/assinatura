@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { SignatureData } from '../types.ts';
 
@@ -8,24 +9,17 @@ interface SignaturePreviewProps {
 }
 
 const SignaturePreview: React.FC<SignaturePreviewProps> = ({ data, isHtmlGeneration = false, signatureType }) => {
-  const { name, title, phone, photo, mobile } = data;
+  const { name, title, phone, photo, photoUrl, mobile } = data;
   
   const isGrupoVpa = signatureType === 'grupo_vpa';
-
   const vpaUrbanismoLogoUrl = 'https://www.vpaurbanismo.com.br/assinaturadeemail/vpa_assinatura.png';
   const grupoVpaLogoUrl = 'https://vpaurbanismo.com.br/assinaturadeemail/grupovpa_assinatura.png';
   const logoUrl = isGrupoVpa ? grupoVpaLogoUrl : vpaUrbanismoLogoUrl;
   const logoAlt = isGrupoVpa ? "Grupo VPA" : "VPA Urbanismo";
   
+  const currentPhoto = (photoUrl && photoUrl.trim() !== '') ? photoUrl : photo;
   const newAddress = 'R. Levindo Lopes, 357 – 3º andar – Savassi, BH – MG.';
   
-  const socialLinks = {
-    instagram: 'https://www.instagram.com/vpaurbanismo',
-    facebook: 'https://www.facebook.com/vpaurbanismo',
-    linkedin: 'https://www.linkedin.com/company/grupo-vpa',
-    youtube: 'https://www.youtube.com/@grupovpa',
-  };
-
   const socialIcons = {
     instagram: 'https://www.vpaurbanismo.com.br/assinaturadeemail/Instagram-verde-48.png',
     facebook: 'https://www.vpaurbanismo.com.br/assinaturadeemail/facebook-verde-48.png',
@@ -33,78 +27,61 @@ const SignaturePreview: React.FC<SignaturePreviewProps> = ({ data, isHtmlGenerat
     youtube: 'https://vpaurbanismo.com.br/assinaturadeemail/youtube-verde-48.png',
   };
 
-
   if (isHtmlGeneration) {
     const titleColor = isGrupoVpa ? '#808080' : '#19a649';
-    // Replicate the provided HTML structure for maximum email client compatibility.
     return (
-      <div style={{ fontFamily: 'Calibri, sans-serif', fontSize: '11pt' }}>
-        <table cellPadding="0" cellSpacing="0" style={{ borderCollapse: 'collapse' }}>
+      <div style={{ fontFamily: 'Arial, sans-serif' }}>
+        <table cellPadding="0" cellSpacing="0" style={{ borderCollapse: 'collapse', border: 'none' }}>
           <tbody>
             <tr>
-              {/* Logo & Socials Cell */}
-              <td style={{ width: '97.5pt', padding: '0 5.4pt', verticalAlign: 'middle' }}>
+              <td style={{ width: '130px', padding: '0 10px 0 0', verticalAlign: 'middle', borderRight: '1px solid #E0E0E0' }}>
                 <p style={{ textAlign: 'center', margin: '0' }}>
                   <a href="https://www.vpaurbanismo.com.br" target="_blank" rel="noopener noreferrer">
                     <img src={logoUrl} alt={logoAlt} width="130" height="74" style={{ display: 'block', border: '0' }} />
                   </a>
                 </p>
                  {!isGrupoVpa && (
-                    <p style={{ textAlign: 'center', margin: '0', paddingTop: '8px' }}>
-                      <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', marginRight: '8px' }}>
-                          <img src={socialIcons.linkedin} alt="LinkedIn" width="20" height="20" style={{ border: 0, display: 'inline-block' }} />
+                    <p style={{ textAlign: 'center', margin: '0', paddingTop: '8px', lineHeight: '1' }}>
+                      <a href="https://www.linkedin.com/company/grupo-vpa" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', marginRight: '4px' }}>
+                          <img src={socialIcons.linkedin} alt="LI" width="18" height="18" style={{ border: 0, display: 'inline-block' }} />
                       </a>
-                      <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', marginRight: '8px' }}>
-                          <img src={socialIcons.instagram} alt="Instagram" width="20" height="20" style={{ border: 0, display: 'inline-block' }} />
+                      <a href="https://www.instagram.com/vpaurbanismo" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', marginRight: '4px' }}>
+                          <img src={socialIcons.instagram} alt="IG" width="18" height="18" style={{ border: 0, display: 'inline-block' }} />
                       </a>
-                      <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', marginRight: '8px' }}>
-                          <img src={socialIcons.facebook} alt="Facebook" width="20" height="20" style={{ border: 0, display: 'inline-block' }} />
+                      <a href="https://www.facebook.com/vpaurbanismo" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', marginRight: '4px' }}>
+                          <img src={socialIcons.facebook} alt="FB" width="18" height="18" style={{ border: 0, display: 'inline-block' }} />
                       </a>
-                      <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                          <img src={socialIcons.youtube} alt="YouTube" width="20" height="20" style={{ border: 0, display: 'inline-block' }} />
+                      <a href="https://www.youtube.com/@grupovpa" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                          <img src={socialIcons.youtube} alt="YT" width="18" height="18" style={{ border: 0, display: 'inline-block' }} />
                       </a>
                     </p>
                  )}
               </td>
               
-              {/* Photo Cell */}
-              <td style={{ width: '70pt', padding: '0 5.4pt', verticalAlign: 'middle' }}>
+              <td style={{ width: '100px', padding: '0 10px', verticalAlign: 'middle' }}>
                  <p style={{ textAlign: 'center', margin: '0' }}>
-                    <img src={photo} alt="Foto" width="92" height="92" style={{ display: 'block', border: '0', borderRadius: '8px' }} />
+                    <img src={currentPhoto} alt="Foto" width="92" height="92" style={{ display: 'block', border: '0', borderRadius: '8px' }} />
                  </p>
               </td>
               
-              {/* Info Cell */}
-              <td style={{ width: '243.25pt', padding: '0 5.4pt', verticalAlign: 'top' }}>
-                <p style={{ margin: '0.1pt', lineHeight: '14.4pt' }}>
-                  <span style={{ fontFamily: 'Arial, sans-serif', fontSize: '12pt', fontWeight: 'bold', color: '#203864' }}>{name}</span><br />
-                  <span style={{ fontFamily: 'Arial, sans-serif', fontSize: '10pt', fontWeight: 'bold', color: titleColor }}>{title}</span><br />
-                  <span style={{ fontFamily: 'Arial, sans-serif', fontSize: '9pt', fontWeight: 'bold', color: '#203864' }}>
-                    {phone}
-                    {mobile && <span> | </span>}
-                    {mobile && mobile}
+              <td style={{ padding: '0 10px', verticalAlign: 'top' }}>
+                <p style={{ margin: '0', lineHeight: '1.2' }}>
+                  <span style={{ fontSize: '12pt', fontWeight: 'bold', color: '#203864' }}>{name}</span><br />
+                  <span style={{ fontSize: '10pt', fontWeight: 'bold', color: titleColor }}>{title}</span><br />
+                  <span style={{ fontSize: '9pt', fontWeight: 'bold', color: '#203864' }}>
+                    {phone} {mobile && ` | ${mobile}`}
                   </span>
                 </p>
-                <table cellPadding="0" cellSpacing="0" style={{ borderCollapse: 'collapse', width: '244.55pt' }}>
-                  <tbody>
-                    <tr style={{ height: '6.8pt' }}>
-                      <td style={{ borderTop: '1pt solid #203864', paddingTop: '5.25pt', verticalAlign: 'middle' }}>
-                        <p style={{ margin: '0.75pt', lineHeight: '11pt' }}>
-                          <a href="https://www.vpaurbanismo.com.br" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                            <span style={{ fontFamily: 'Arial, sans-serif', fontSize: '9pt', fontWeight: 'bold', color: '#203864' }}>www.vpaurbanismo.com.br</span>
-                          </a>
-                        </p>
-                      </td>
-                    </tr>
-                    <tr style={{ height: '7.2pt' }}>
-                      <td style={{ paddingTop: '5.25pt', verticalAlign: 'middle' }}>
-                        <p style={{ margin: '0.75pt', lineHeight: '9pt', fontFamily: 'Calibri, sans-serif', fontSize: '9pt', color: '#7f7f7f' }}>
-                          {newAddress}
-                        </p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div style={{ marginTop: '6px', borderTop: '1px solid #203864', paddingTop: '4px' }}>
+                  <p style={{ margin: '0', lineHeight: '1.2' }}>
+                    <a href="https://www.vpaurbanismo.com.br" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                      <span style={{ fontSize: '9pt', fontWeight: 'bold', color: '#203864' }}>www.vpaurbanismo.com.br</span>
+                    </a>
+                  </p>
+                  <p style={{ margin: '2px 0 0 0', lineHeight: '1.1', fontSize: '8.5pt', color: '#7f7f7f' }}>
+                    {newAddress}
+                  </p>
+                </div>
               </td>
             </tr>
           </tbody>
@@ -113,53 +90,39 @@ const SignaturePreview: React.FC<SignaturePreviewProps> = ({ data, isHtmlGenerat
     );
   }
 
-  // For live preview, mimic the new styles with Tailwind.
   const titleColorClass = isGrupoVpa ? 'text-gray-500' : 'text-[#19a649]';
   return (
-    <div className="font-sans w-full">
+    <div className="font-sans min-w-[400px]">
       <div className="flex items-center">
-        {/* Logo & Socials */}
-        <div className="px-2 flex flex-col items-center flex-shrink-0">
-           <a href="https://www.vpaurbanismo.com.br" target="_blank" rel="noopener noreferrer">
-             <img src={logoUrl} alt={logoAlt} className="w-[130px] h-[74px]" />
-           </a>
+        <div className="pr-3 flex flex-col items-center flex-shrink-0 border-r border-gray-200">
+           <img src={logoUrl} alt={logoAlt} width="110" className="w-[110px] h-auto" />
            {!isGrupoVpa && (
-            <div className="w-[130px]">
-              <div className="mt-2 flex items-center justify-center">
-                  <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="mr-2">
-                    <img src={socialIcons.linkedin} alt="LinkedIn" className="w-5 h-5" />
-                  </a>
-                  <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="mr-2">
-                    <img src={socialIcons.instagram} alt="Instagram" className="w-5 h-5" />
-                  </a>
-                  <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="mr-2">
-                    <img src={socialIcons.facebook} alt="Facebook" className="w-5 h-5" />
-                  </a>
-                  <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer">
-                    <img src={socialIcons.youtube} alt="YouTube" className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
+            <div className="mt-2 flex items-center justify-center space-x-1">
+                <img src={socialIcons.linkedin} alt="LI" width="16" height="16" className="w-4 h-4 opacity-70" />
+                <img src={socialIcons.instagram} alt="IG" width="16" height="16" className="w-4 h-4 opacity-70" />
+                <img src={socialIcons.facebook} alt="FB" width="16" height="16" className="w-4 h-4 opacity-70" />
+                <img src={socialIcons.youtube} alt="YT" width="16" height="16" className="w-4 h-4 opacity-70" />
+            </div>
            )}
         </div>
-        {/* Photo */}
-        <div className="px-2 flex-shrink-0">
-          <img src={photo} alt="Foto" className="w-[92px] h-[92px] object-cover rounded-lg" />
+        <div className="px-3 flex-shrink-0">
+          <img 
+            src={currentPhoto} 
+            alt="Foto" 
+            width="85"
+            height="85"
+            className="w-[85px] h-[85px] object-cover rounded-lg border border-gray-100"
+          />
         </div>
-        {/* Info */}
-        <div className="flex-grow px-2 self-start">
-          <p className="font-bold text-[12pt] text-[#203864] m-0 leading-tight">{name}</p>
-          <p className={`text-[10pt] font-bold m-0 leading-tight ${titleColorClass}`}>{title}</p>
-          <p className="text-[9pt] font-bold m-0 leading-tight text-[#203864]">
-             {phone}
-             {mobile && <span> | </span>}
-             {mobile}
+        <div className="flex-grow flex flex-col justify-start">
+          <p className="font-bold text-[11pt] text-[#203864] leading-tight m-0">{name}</p>
+          <p className={`text-[9pt] font-bold leading-tight m-0 ${titleColorClass}`}>{title}</p>
+          <p className="text-[8.5pt] font-bold leading-tight m-0 text-[#203864] mt-1">
+             {phone} {mobile && ` | ${mobile}`}
           </p>
-          <div className="border-t border-[#203864] pt-1 mt-1">
-            <a href="https://www.vpaurbanismo.com.br" target="_blank" rel="noopener noreferrer" className="text-[#203864] no-underline text-[9pt] font-bold">
-              www.vpaurbanismo.com.br
-            </a>
-            <p className="text-[#7f7f7f] text-[9pt] m-0 pt-1 leading-tight">{newAddress}</p>
+          <div className="border-t border-[#203864] mt-1 pt-1">
+            <p className="text-[#203864] text-[8.5pt] font-bold m-0">www.vpaurbanismo.com.br</p>
+            <p className="text-[#7f7f7f] text-[7.5pt] m-0 leading-tight">{newAddress}</p>
           </div>
         </div>
       </div>
