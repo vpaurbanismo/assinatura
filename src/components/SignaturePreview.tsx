@@ -12,21 +12,14 @@ const SignaturePreview: React.FC<SignaturePreviewProps> = ({ data, isHtmlGenerat
   const { name, title, phone, photo, photoUrl, mobile } = data;
   
   const isGrupoVpa = signatureType === 'grupo_vpa';
-  const vpaUrbanismoLogoUrl = 'https://www.vpaurbanismo.com.br/assinaturadeemail/vpa_assinatura.png';
-  const grupoVpaLogoUrl = 'https://vpaurbanismo.com.br/assinaturadeemail/grupovpa_assinatura.png';
+  const vpaUrbanismoLogoUrl = 'https://vpaurbanismo.com.br/wp-content/uploads/2026/09/VPA-Urbanismo-Original.png';
+  const grupoVpaLogoUrl = 'https://vpaurbanismo.com.br/wp-content/uploads/2026/08/Rodape-GrupoVpa.png';
   const logoUrl = isGrupoVpa ? grupoVpaLogoUrl : vpaUrbanismoLogoUrl;
   const logoAlt = isGrupoVpa ? "Grupo VPA" : "VPA Urbanismo";
   
   const currentPhoto = (photoUrl && photoUrl.trim() !== '') ? photoUrl : photo;
   const newAddress = 'R. Levindo Lopes, 357 – 3º andar – Savassi, BH – MG.';
   
-  const socialIcons = {
-    instagram: 'https://www.vpaurbanismo.com.br/assinaturadeemail/Instagram-verde-48.png',
-    facebook: 'https://www.vpaurbanismo.com.br/assinaturadeemail/facebook-verde-48.png',
-    linkedin: 'https://www.vpaurbanismo.com.br/assinaturadeemail/linkedin_verde-48.png',
-    youtube: 'https://vpaurbanismo.com.br/assinaturadeemail/youtube-verde-48.png',
-  };
-
   if (isHtmlGeneration) {
     const titleColor = isGrupoVpa ? '#808080' : '#19a649';
     return (
@@ -41,19 +34,14 @@ const SignaturePreview: React.FC<SignaturePreviewProps> = ({ data, isHtmlGenerat
                   </a>
                 </p>
                  {!isGrupoVpa && (
-                    <p style={{ textAlign: 'center', margin: '0', paddingTop: '8px', lineHeight: '1' }}>
-                      <a href="https://www.linkedin.com/company/grupo-vpa" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', marginRight: '4px' }}>
-                          <img src={socialIcons.linkedin} alt="LI" width="18" height="18" style={{ border: 0, display: 'inline-block' }} />
-                      </a>
-                      <a href="https://www.instagram.com/vpaurbanismo" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', marginRight: '4px' }}>
-                          <img src={socialIcons.instagram} alt="IG" width="18" height="18" style={{ border: 0, display: 'inline-block' }} />
-                      </a>
-                      <a href="https://www.facebook.com/vpaurbanismo" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', marginRight: '4px' }}>
-                          <img src={socialIcons.facebook} alt="FB" width="18" height="18" style={{ border: 0, display: 'inline-block' }} />
-                      </a>
-                      <a href="https://www.youtube.com/@grupovpa" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                          <img src={socialIcons.youtube} alt="YT" width="18" height="18" style={{ border: 0, display: 'inline-block' }} />
-                      </a>
+                    <p style={{ textAlign: 'center', margin: '0', paddingTop: '8px', lineHeight: '1.2', fontSize: '8pt' }}>
+                      <a href="https://www.linkedin.com/company/grupo-vpa" target="_blank" rel="noopener noreferrer" style={{ color: '#19a649', textDecoration: 'none', fontWeight: 'bold' }}>LinkedIn</a>
+                      <span style={{ color: '#a3a3a3', padding: '0 4px' }}>|</span>
+                      <a href="https://www.instagram.com/vpaurbanismo" target="_blank" rel="noopener noreferrer" style={{ color: '#19a649', textDecoration: 'none', fontWeight: 'bold' }}>Instagram</a>
+                      <span style={{ color: '#a3a3a3', padding: '0 4px' }}>|</span>
+                      <a href="https://www.facebook.com/vpaurbanismo" target="_blank" rel="noopener noreferrer" style={{ color: '#19a649', textDecoration: 'none', fontWeight: 'bold' }}>Facebook</a>
+                      <span style={{ color: '#a3a3a3', padding: '0 4px' }}>|</span>
+                      <a href="https://www.youtube.com/@grupovpa" target="_blank" rel="noopener noreferrer" style={{ color: '#19a649', textDecoration: 'none', fontWeight: 'bold' }}>YouTube</a>
                     </p>
                  )}
               </td>
@@ -97,11 +85,12 @@ const SignaturePreview: React.FC<SignaturePreviewProps> = ({ data, isHtmlGenerat
         <div className="pr-3 flex flex-col items-center flex-shrink-0 border-r border-gray-200">
            <img src={logoUrl} alt={logoAlt} width="110" className="w-[110px] h-auto" />
            {!isGrupoVpa && (
-            <div className="mt-2 flex items-center justify-center space-x-1">
-                <img src={socialIcons.linkedin} alt="LI" width="16" height="16" className="w-4 h-4 opacity-70" />
-                <img src={socialIcons.instagram} alt="IG" width="16" height="16" className="w-4 h-4 opacity-70" />
-                <img src={socialIcons.facebook} alt="FB" width="16" height="16" className="w-4 h-4 opacity-70" />
-                <img src={socialIcons.youtube} alt="YT" width="16" height="16" className="w-4 h-4 opacity-70" />
+            <div className="mt-2 flex items-center justify-center gap-1 text-[8px] font-bold text-[#19a649]">
+                <a href="https://www.linkedin.com/company/grupo-vpa" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <span className="text-gray-300">|</span>
+                <a href="https://www.instagram.com/vpaurbanismo" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <span className="text-gray-300">|</span>
+                <a href="https://www.facebook.com/vpaurbanismo" target="_blank" rel="noopener noreferrer">Facebook</a>
             </div>
            )}
         </div>
