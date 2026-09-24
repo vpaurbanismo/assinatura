@@ -7,7 +7,7 @@ interface PasswordProtectionProps {
 
 const CORRECT_PASSWORD = 'vpa2024';
 const AUTHENTICATION_KEY = 'vpa-assinatura-authenticated';
-const VPA_URBANISMO_LOGO_URL = 'https://vpaurbanismo.com.br/wp-content/uploads/2026/09/VPA-Urbanismo-Original.png';
+const VPA_URBANISMO_LOGO_URL = 'https://www.vpaurbanismo.com.br/assinaturadeemail/vpa_assinatura.png';
 
 const PasswordProtection: React.FC<PasswordProtectionProps> = ({ children }) => {
   const [password, setPassword] = useState('');
