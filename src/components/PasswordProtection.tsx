@@ -88,15 +88,6 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ children }) => 
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </button>
                 </form>
-                <a
-                  href="mailto:marketing@grupovpa.com.br?subject=Solicita%C3%A7%C3%A3o%20de%20senha%20do%20gerador%20de%20assinaturas&body=Ol%C3%A1%2C%20preciso%20da%20senha%20de%20acesso%20ao%20Gerador%20de%20Assinaturas%20da%20VPA."
-                  className="mt-5 block text-center text-xs font-semibold text-[#223970] underline decoration-slate-300 underline-offset-4 transition hover:text-[#19a649]"
-                >
-                  Esqueci minha senha
-                </a>
-                <p className="mt-3 text-center text-[11px] leading-5 text-slate-500">
-                  A solicitação será enviada ao grupo de Marketing.
-                </p>
             </div>
             
             <p className="text-center text-gray-300 text-[8px] mt-10 font-bold uppercase tracking-[0.4em]">
