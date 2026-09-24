@@ -6,6 +6,9 @@ import ImageUploader from './components/ImageUploader.tsx';
 
 type SignatureType = 'vpa_urbanismo' | 'grupo_vpa';
 
+const VPA_URBANISMO_LOGO_URL = 'https://vpaurbanismo.com.br/wp-content/uploads/2026/09/VPA-Urbanismo-Original.png';
+const GRUPO_VPA_LOGO_URL = 'https://vpaurbanismo.com.br/wp-content/uploads/2026/08/Rodape-GrupoVpa.png';
+
 const App: React.FC = () => {
   const [signatureData, setSignatureData] = useState<SignatureData>({
     name: 'Carolina Lattanzio',
@@ -82,14 +85,14 @@ const App: React.FC = () => {
               onClick={() => setSignatureType('vpa_urbanismo')}
               className={`px-4 py-2 rounded-2xl border-2 transition-all flex flex-col items-center justify-center h-16 w-36 ${signatureType === 'vpa_urbanismo' ? 'border-[#19a649] bg-green-50 shadow-lg scale-105' : 'border-gray-50 bg-white opacity-40 hover:opacity-100'}`}
             >
-              <img src="https://www.vpaurbanismo.com.br/assinaturadeemail/vpa_assinatura.png" alt="Urbanismo" className="h-6 object-contain" />
+              <img src={VPA_URBANISMO_LOGO_URL} alt="VPA Urbanismo" className="h-6 object-contain" />
               <span className="text-[8px] font-black mt-1 text-[#203864]">MODELO VPA</span>
             </button>
             <button 
               onClick={() => setSignatureType('grupo_vpa')}
               className={`px-4 py-2 rounded-2xl border-2 transition-all flex flex-col items-center justify-center h-16 w-36 ${signatureType === 'grupo_vpa' ? 'border-[#203864] bg-blue-50 shadow-lg scale-105' : 'border-gray-50 bg-white opacity-40 hover:opacity-100'}`}
             >
-              <img src="https://vpaurbanismo.com.br/assinaturadeemail/grupovpa_assinatura.png" alt="Grupo VPA" className="h-6 object-contain" />
+              <img src={GRUPO_VPA_LOGO_URL} alt="Grupo VPA" className="h-6 object-contain" />
               <span className="text-[8px] font-black mt-1 text-[#203864]">MODELO GRUPO</span>
             </button>
           </div>
