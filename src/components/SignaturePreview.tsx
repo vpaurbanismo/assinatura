@@ -16,6 +16,7 @@ const SignaturePreview: React.FC<SignaturePreviewProps> = ({ data, isHtmlGenerat
   const grupoVpaLogoUrl = 'https://www.vpaurbanismo.com.br/assinaturadeemail/grupovpa_assinatura.png';
   const logoUrl = isGrupoVpa ? grupoVpaLogoUrl : vpaUrbanismoLogoUrl;
   const logoAlt = isGrupoVpa ? "Grupo VPA" : "VPA Urbanismo";
+  const logoHeight = isGrupoVpa ? 65 : 74;
   
   const currentPhoto = (photoUrl && photoUrl.trim() !== '') ? photoUrl : photo;
   const newAddress = 'R. Levindo Lopes, 357 – 3º andar – Savassi, BH – MG.';
@@ -36,7 +37,7 @@ const SignaturePreview: React.FC<SignaturePreviewProps> = ({ data, isHtmlGenerat
               <td style={{ width: '130px', padding: '0 10px 0 0', verticalAlign: 'middle', borderRight: '1px solid #E0E0E0' }}>
                 <p style={{ textAlign: 'center', margin: '0' }}>
                   <a href="https://www.vpaurbanismo.com.br" target="_blank" rel="noopener noreferrer">
-                    <img src={logoUrl} alt={logoAlt} width="130" height="74" style={{ display: 'block', border: '0' }} />
+                    <img src={logoUrl} alt={logoAlt} width="130" height={logoHeight} style={{ display: 'block', border: '0' }} />
                   </a>
                 </p>
                  {!isGrupoVpa && (
