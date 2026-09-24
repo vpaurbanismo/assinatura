@@ -6,8 +6,8 @@ import ImageUploader from './components/ImageUploader.tsx';
 
 type SignatureType = 'vpa_urbanismo' | 'grupo_vpa';
 
-const VPA_URBANISMO_LOGO_URL = 'https://vpaurbanismo.com.br/wp-content/uploads/2026/09/VPA-Urbanismo-Original.png';
-const GRUPO_VPA_LOGO_URL = 'https://vpaurbanismo.com.br/wp-content/uploads/2026/08/Rodape-GrupoVpa.png';
+const VPA_URBANISMO_LOGO_URL = 'https://www.vpaurbanismo.com.br/assinaturadeemail/vpa_assinatura.png';
+const GRUPO_VPA_LOGO_URL = 'https://www.vpaurbanismo.com.br/assinaturadeemail/grupovpa_assinatura.png';
 
 const App: React.FC = () => {
   const [signatureData, setSignatureData] = useState<SignatureData>({
