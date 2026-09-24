@@ -6,16 +6,20 @@ interface PasswordProtectionProps {
 }
 
 const CORRECT_PASSWORD = 'vpa2024';
+const AUTHENTICATION_KEY = 'vpa-assinatura-authenticated';
+const VPA_URBANISMO_LOGO_URL = 'https://vpaurbanismo.com.br/wp-content/uploads/2026/09/VPA-Urbanismo-Original.png';
 
 const PasswordProtection: React.FC<PasswordProtectionProps> = ({ children }) => {
   const [password, setPassword] = useState('');
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => sessionStorage.getItem(AUTHENTICATION_KEY) === 'true');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
 
   const handlePasswordSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password === CORRECT_PASSWORD) {
       setIsAuthenticated(true);
+      sessionStorage.setItem(AUTHENTICATION_KEY, 'true');
       setError('');
     } else {
       setError('Senha incorreta. Tente novamente.');
@@ -32,7 +36,7 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ children }) => 
         <div className="bg-white rounded-[2.5rem] shadow-2xl p-10 md:p-14 border border-gray-100 relative overflow-hidden">
             <div className="text-center mb-12">
                 <img 
-                  src="https://www.vpaurbanismo.com.br/assinaturadeemail/vpa_assinatura.png" 
+                  src={VPA_URBANISMO_LOGO_URL}
                   alt="VPA Urbanismo" 
                   className="w-[180px] h-auto object-contain mx-auto mb-10" 
                 />
@@ -48,14 +52,26 @@ const PasswordProtection: React.FC<PasswordProtectionProps> = ({ children }) => 
                 <form onSubmit={handlePasswordSubmit} className="space-y-5">
                     <div className="space-y-2">
                         <label htmlFor="password" className="block text-center text-[9px] font-black text-gray-400 uppercase tracking-widest">Senha de Segurança</label>
-                        <input
+                        <div className="relative">
+                          <input
                             id="password"
-                            type="password"
+                            type={showPassword ? 'text' : 'password'}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="block w-full px-4 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#19a649]/20 focus:border-[#19a649] text-center font-bold text-[#203864] text-xl transition-all"
+                            className="block w-full px-12 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#19a649]/20 focus:border-[#19a649] text-center font-bold text-[#203864] text-xl transition-all"
                             placeholder="••••••••"
+                            autoComplete="current-password"
                         />
+                          <button
+                            type="button"
+                            onClick={() => setShowPassword((visible) => !visible)}
+                            className="absolute inset-y-0 right-0 px-4 text-[#203864] hover:text-[#19a649] focus:outline-none focus:ring-2 focus:ring-[#19a649] rounded-r-2xl"
+                            aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                            aria-pressed={showPassword}
+                          >
+                            {showPassword ? 'Ocultar' : 'Mostrar'}
+                          </button>
+                        </div>
                     </div>
                     
                     {error && (
