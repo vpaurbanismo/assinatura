@@ -46,7 +46,9 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onPhotoUpload, onUrlChang
           return;
         }
 
-        const targetSize = 92;
+        // Mantém a foto exibida em 92 × 92 px na assinatura, mas gera o arquivo
+        // em resolução dupla para preservar a nitidez em clientes de e-mail.
+        const targetSize = 184;
         const borderRadius = 8;
         const canvas = document.createElement('canvas');
         canvas.width = targetSize;
@@ -81,8 +83,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onPhotoUpload, onUrlChang
 
         ctx.drawImage(img, sourceX, sourceY, sourceSize, sourceSize, 0, 0, targetSize, targetSize);
 
-        // OTIMIZAÇÃO: JPEG qualidade 0.7 é muito mais leve que PNG
-        const resizedImageDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+        const resizedImageDataUrl = canvas.toDataURL('image/jpeg', 0.9);
         onPhotoUpload(resizedImageDataUrl);
         onUrlChange('');
       };
