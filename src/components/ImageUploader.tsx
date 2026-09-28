@@ -8,8 +8,8 @@ interface ImageUploaderProps {
   currentUrl?: string;
 }
 
-const MAX_FILE_SIZE_KB = 500;
-const MAX_PIXELS = 2500; 
+const MAX_FILE_SIZE_KB = 10 * 1024;
+const MAX_PIXELS = 6000; 
 
 const ImageUploader: React.FC<ImageUploaderProps> = ({ onPhotoUpload, onUrlChange, currentPhoto, currentUrl }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -24,7 +24,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onPhotoUpload, onUrlChang
     // 1. Validação de Tamanho (KB) - Resolve o erro de arquivos gigantes
     const fileSizeKB = file.size / 1024;
     if (fileSizeKB > MAX_FILE_SIZE_KB) {
-      setError(`ARQUIVO REJEITADO: A foto tem ${fileSizeKB.toFixed(0)}KB. O limite máximo é de ${MAX_FILE_SIZE_KB}KB. Reduza o tamanho da imagem.`);
+      setError(`ARQUIVO REJEITADO: A foto tem ${fileSizeKB.toFixed(0)}KB. O limite máximo é de 10 MB.`);
       if (fileInputRef.current) fileInputRef.current.value = '';
       return;
     }
@@ -133,7 +133,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onPhotoUpload, onUrlChang
             className="hidden"
             accept="image/png, image/jpeg"
           />
-          <p className="text-[10px] text-gray-400 mt-1 font-medium">Máx: 500KB</p>
+          <p className="text-[10px] text-gray-400 mt-1 font-medium">Máx: 10 MB</p>
         </div>
       </div>
 
