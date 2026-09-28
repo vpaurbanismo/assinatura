@@ -16,7 +16,7 @@ const SignaturePreview: React.FC<SignaturePreviewProps> = ({ data, isHtmlGenerat
   const grupoVpaLogoUrl = 'https://www.vpaurbanismo.com.br/assinaturadeemail/grupovpa_assinatura.png';
   const logoUrl = isGrupoVpa ? grupoVpaLogoUrl : vpaUrbanismoLogoUrl;
   const logoAlt = isGrupoVpa ? "Grupo VPA" : "VPA Urbanismo";
-  const logoHeight = isGrupoVpa ? 65 : 74;
+  const logoHeight = 74;
   
   const currentPhoto = (photoUrl && photoUrl.trim() !== '') ? photoUrl : photo;
   const newAddress = 'R. Levindo Lopes, 357 – 3º andar – Savassi, BH – MG.';
