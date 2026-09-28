@@ -49,7 +49,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onPhotoUpload, onUrlChang
         // Mantém a foto exibida em 92 × 92 px na assinatura, mas gera o arquivo
         // em resolução dupla para preservar a nitidez em clientes de e-mail.
         const targetSize = 184;
-        const borderRadius = 8;
+        // A borda precisa estar incorporada à própria imagem, pois alguns\n        // clientes de e-mail ignoram o border-radius aplicado no HTML.\n        const borderRadius = 16;
         const canvas = document.createElement('canvas');
         canvas.width = targetSize;
         canvas.height = targetSize;
@@ -83,7 +83,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onPhotoUpload, onUrlChang
 
         ctx.drawImage(img, sourceX, sourceY, sourceSize, sourceSize, 0, 0, targetSize, targetSize);
 
-        const resizedImageDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+        const resizedImageDataUrl = canvas.toDataURL('image/png');
         onPhotoUpload(resizedImageDataUrl);
         onUrlChange('');
       };
